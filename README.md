@@ -75,3 +75,11 @@ All of this would go before the main function
 3. If they are forward declared, C/C++ knows they exists and allows this to work
 
 # Macros
+
+## Program Pre-Processing
+Many programming languages allow the programmer to create Macros or inline procedures
+* Macros are pre-processed
+* Happens before primary compilation
+
+References to Macros and inline procedures are replaced by their actual code which is compiled with the rest of the code
+* retains readability while exploiting some effeciency features
