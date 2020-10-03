@@ -1,11 +1,10 @@
 # LearnCpp
 
 # Table of Contents
-1. [Imperative]()
-2. [Functions]()
-3. [Macros]()
-
-999. [Credit]()
+[Imperative]()
+[Functions]()
+[Macros]()
+[Credit]()
 
 
 # Imperative Paradigm
