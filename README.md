@@ -1,4 +1,4 @@
-# LearnCpp
+# Learning C++
 
 ![C++Image](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F1%2F18%2FISO_C%252B%252B_Logo.svg%2F160px-ISO_C%252B%252B_Logo.svg.png&f=1&nofb=1)
 
@@ -84,3 +84,19 @@ Many programming languages allow the programmer to create Macros or inline proce
 
 References to Macros and inline procedures are replaced by their actual code which is compiled with the rest of the code
 * retains readability while exploiting some effeciency features
+
+These are not used in all programming languages. More specifically this can be defined in C and C++
+* _inline/inline prefix keyword for functions
+* #define keywords
+
+Java does not support macros
+```cpp
+{
+
+    #define MAXVAL 100
+    #define QUADFN(a,b) a*sqrt(b)+b*b- 2*a*a*t++
+    x = MAXVAL + QUADFN(5,16);
+
+}
+```
+
