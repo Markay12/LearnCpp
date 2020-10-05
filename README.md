@@ -83,3 +83,12 @@ Many programming languages allow the programmer to create Macros or inline proce
 
 References to Macros and inline procedures are replaced by their actual code which is compiled with the rest of the code
 * retains readability while exploiting some effeciency features
+
+These macros become a text replacement. When using these in BASH or our Linux command line we can think of alias
+One that I use a lot of the time is `alias gc="git commit "` which allows me to commit a file quickly to git.
+> git commit ./<filename> -m "comment"
+now becomes
+> gc ./<filename> -m "comment"
+
+
+
