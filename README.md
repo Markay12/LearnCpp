@@ -1,11 +1,12 @@
-# LearnCpp
+# Learning C++
+
+![C++Image](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F1%2F18%2FISO_C%252B%252B_Logo.svg%2F160px-ISO_C%252B%252B_Logo.svg.png&f=1&nofb=1)
 
 # Table of Contents
-1. [Imperative]()
-2. [Functions]()
-3. [Macros]()
-
-999. [Credit]()
+* [Imperative]()
+* [Functions]()
+* [Macros]()
+* [Credit]()
 
 
 # Imperative Paradigm
@@ -84,6 +85,7 @@ Many programming languages allow the programmer to create Macros or inline proce
 References to Macros and inline procedures are replaced by their actual code which is compiled with the rest of the code
 * retains readability while exploiting some effeciency features
 
+<<<<<<< HEAD
 These macros become a text replacement. When using these in BASH or our Linux command line we can think of alias
 One that I use a lot of the time is `alias gc="git commit "` which allows me to commit a file quickly to git.
 > git commit ./<filename> -m "comment"
@@ -91,4 +93,20 @@ now becomes
 > gc ./<filename> -m "comment"
 
 
+=======
+These are not used in all programming languages. More specifically this can be defined in C and C++
+* _inline/inline prefix keyword for functions
+* #define keywords
+
+Java does not support macros
+```cpp
+{
+
+    #define MAXVAL 100
+    #define QUADFN(a,b) a*sqrt(b)+b*b- 2*a*a*t++
+    x = MAXVAL + QUADFN(5,16);
+
+}
+```
+>>>>>>> 673a843c5b9c5dc6c6b1aae58befefe44aa5a5fd
 
