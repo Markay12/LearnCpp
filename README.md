@@ -85,7 +85,6 @@ Many programming languages allow the programmer to create Macros or inline proce
 References to Macros and inline procedures are replaced by their actual code which is compiled with the rest of the code
 * retains readability while exploiting some effeciency features
 
-<<<<<<< HEAD
 These macros become a text replacement. When using these in BASH or our Linux command line we can think of alias
 One that I use a lot of the time is `alias gc="git commit "` which allows me to commit a file quickly to git.
 > git commit ./<filename> -m "comment"
@@ -93,7 +92,6 @@ now becomes
 > gc ./<filename> -m "comment"
 
 
-=======
 These are not used in all programming languages. More specifically this can be defined in C and C++
 * _inline/inline prefix keyword for functions
 * #define keywords
@@ -108,5 +106,71 @@ Java does not support macros
 
 }
 ```
->>>>>>> 673a843c5b9c5dc6c6b1aae58befefe44aa5a5fd
 
+## How do these macros work?
+
+### Out-line - simulating a function call
+Two separate statements that contradict each other
+Statement [1] and statement [2]
+
+We have two conflict opinions on using pictures in writing. 
+Confucius gave a statement [1], while Dijkstra gave a different statement [2]....
+
+Do you believe the statement [1] or [2]?
+[1] Confucius : “A picture is worth a thousand words”.
+[2] Dijkstra: “Pictures are a crutch for weak minds”.
+
+### In-line
+Use within the same sentence and keep the line going
+We have two conflict opinions on using pictures in writing. Confucius gave a statement “A picture is worth a thousand words”, while Dijkstra gave a different statement “Pictures are a crutch for weak minds”.
+Do you believe the statement “A picture is worth a thousand words” or “Pictures are a crutch for weak minds”?
+
+
+### In vs Out
+using input inline directly is most likely the best way to go
+* sometimes programming a macro can work well
+
+**Risks of Macros**
+* Macros aren't checked for syntax, context or semantics- they are just inserted into the code then compiled
+    * the data given is the data the macro will try and work with
+* lead to difficulties in tracking down debugging errors
+
+
+## Macros vs Inline
+The programmer and compiler may choose to 'in-line' a function/method
+* processed differently
+* Macros are pre-processed and direct replacements
+    * can lead to errors
+* In-line procedures are handled by the compiler and is usually done only for simple functions
+
+In-Lining (in C/C++):
+* The compiler decided if the code is to be optimized
+* Compiler is responsible for the correctness
+* The programmer (you) will not know if the optimization is done and cannot predict performance
+    * can use inline keywords for debugging to make sure this happens
+
+Macro
+* programmer decides if to optimize the program
+* programmer is responsible for correctness
+
+
+# Anatomy: C vs Java
+C is the "grand parent" of many programming languages
+C's syntax structure informs:
+* C++
+* Java
+* JavaScript
+* Pearl
+* PHP
+* C#
+* ActionScript
+* Objective-C
+
+Makes going back and forth quite easy, these above are all C derived languages
+
+## Anatomy of C
+C's primary component structure revolves around **functions**
+
+Functions are essentially sub-routines that can be called on at any time through name and a parameters list
+There are two kinds of functions:
+* 
