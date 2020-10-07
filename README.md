@@ -6,6 +6,8 @@
 * [Imperative]()
 * [Functions]()
 * [Macros]()
+* [Compilation]()
+* [Anatomy: C vs Java]()
 * [Credit]()
 
 
@@ -201,4 +203,78 @@ We have statements to bring in our basic output function
 stdio.h gives us access to Standard Input and Ouput functions
 * Console and File based I/O
 
+## The Main Function
+This function can be void but some compilers won't allow for this
+* You can just use `int main() { ...return 0; }`
 
+The main function can take command line args, passed into the params
+* `int main(int argc, char** argv)`
+* by convention we name these vars
+    * argc - Argument Count - contains num of args given in command line
+    * char** argv - argument vector - Contains the C-style strings for each commadn line argumetn given to the executable
+
+### printf()
+printf() allows us to format out our output to a greater extent
+
+# Compilation
+gcc -g -Wall helloW.c -o hello
+
+gcc - what are we compiling
+g - include all debugging info
+Wall - Show us all of the warnings
+helloW.c - filename that we are compiling
+o - redirect ouput to this filename
+
+## Declaring Variables
+At the machine level data is stored in a memory location as a sequence of bits.
+A variable declaration binds a name, attributes and a value to a location in memory allowing the programmer easy access to data stored.
+Attributes:
+* Type - what kind of info is stored, determines size of storage
+* Scope - What is the lifetime of the variable - this determines what part of RAM the var is stored in
+* Qualifiers - modifications such as constant
+
+Follows the following syntax
+* <data type> <variable name> = <value>
+
+You can separate multiple declarations with commas
+* int a, b, c;
+
+Initializations can also be separated
+
+## Scope
+The **scope** of a var begins at the point of declaration
+* Local Scope - A var that is created within code-block of function
+* Block Scope - A var that is created within some other code-block such as if statement, loop etc.
+
+Declaration-before-use: All variables must be declared before they are used
+```cpp
+{
+
+    int height = 6;
+    int width = 6;
+    int area  = height * width;
+
+}
+```
+In the example above, if we change the declaration of height and place `int area = height * width;` we would get a compile time error
+
+*Everything in C is declaration before use* 
+
+# Data Types and C
+C defines five basic types:
+* Character - 1 Byte - char
+* Integer - 4 Bytes - int
+* Floating point decimal - 4 bytes - float
+* Double floating point decimal - 8 bytes - double
+* Void - valueless - void
+
+C++ further Adds
+* Boolean - 1 byte - bool
+* Wide Character - 2 bytes - wchar_t
+
+**NOTE: BOOLEAN does not exist as a data type in C** 
+
+## Modifications
+Short - short - reduces the size of an int to 2 bytes
+Long - long - increases the size of an int to 8 bytes
+Unsigned and Signed integers
