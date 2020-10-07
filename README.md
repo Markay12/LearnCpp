@@ -173,4 +173,32 @@ C's primary component structure revolves around **functions**
 
 Functions are essentially sub-routines that can be called on at any time through name and a parameters list
 There are two kinds of functions:
-* 
+* pre-compiler library imports
+* prototypes for functions and structures
+* global scope
+* main function
+* function definitions
+
+```cpp
+{
+
+    #include<stdio.h>
+
+    main()
+    {
+
+        printf("Hello World!");
+
+    }
+
+}
+```
+
+We have statements to bring in our basic output function
+* The #include statement is what brings a code library to our program
+    * one major difficulty with C/C++ is remembering all the libraries that you need to use
+
+stdio.h gives us access to Standard Input and Ouput functions
+* Console and File based I/O
+
+
