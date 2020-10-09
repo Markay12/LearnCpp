@@ -1,4 +1,4 @@
-# LearnCpp
+# Learning C++
 
 ![C++Image](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F1%2F18%2FISO_C%252B%252B_Logo.svg%2F160px-ISO_C%252B%252B_Logo.svg.png&f=1&nofb=1)
 
@@ -6,6 +6,11 @@
 * [Imperative]()
 * [Functions]()
 * [Macros]()
+* [Compilation]()
+* [Anatomy: C vs Java]()
+* [printf]()
+* [Input]()
+* [C++ Style]()
 * [Credit]()
 
 
@@ -84,3 +89,285 @@ Many programming languages allow the programmer to create Macros or inline proce
 
 References to Macros and inline procedures are replaced by their actual code which is compiled with the rest of the code
 * retains readability while exploiting some effeciency features
+
+These macros become a text replacement. When using these in BASH or our Linux command line we can think of alias
+One that I use a lot of the time is `alias gc="git commit "` which allows me to commit a file quickly to git.
+> git commit ./<filename> -m "comment"
+now becomes
+> gc ./<filename> -m "comment"
+
+
+These are not used in all programming languages. More specifically this can be defined in C and C++
+* _inline/inline prefix keyword for functions
+* #define keywords
+
+Java does not support macros
+```cpp
+{
+
+    #define MAXVAL 100
+    #define QUADFN(a,b) a*sqrt(b)+b*b- 2*a*a*t++
+    x = MAXVAL + QUADFN(5,16);
+
+}
+```
+
+## How do these macros work?
+
+### Out-line - simulating a function call
+Two separate statements that contradict each other
+Statement [1] and statement [2]
+
+We have two conflict opinions on using pictures in writing. 
+Confucius gave a statement [1], while Dijkstra gave a different statement [2]....
+
+Do you believe the statement [1] or [2]?
+[1] Confucius : “A picture is worth a thousand words”.
+[2] Dijkstra: “Pictures are a crutch for weak minds”.
+
+### In-line
+Use within the same sentence and keep the line going
+We have two conflict opinions on using pictures in writing. Confucius gave a statement “A picture is worth a thousand words”, while Dijkstra gave a different statement “Pictures are a crutch for weak minds”.
+Do you believe the statement “A picture is worth a thousand words” or “Pictures are a crutch for weak minds”?
+
+
+### In vs Out
+using input inline directly is most likely the best way to go
+* sometimes programming a macro can work well
+
+**Risks of Macros**
+* Macros aren't checked for syntax, context or semantics- they are just inserted into the code then compiled
+    * the data given is the data the macro will try and work with
+* lead to difficulties in tracking down debugging errors
+
+
+## Macros vs Inline
+The programmer and compiler may choose to 'in-line' a function/method
+* processed differently
+* Macros are pre-processed and direct replacements
+    * can lead to errors
+* In-line procedures are handled by the compiler and is usually done only for simple functions
+
+In-Lining (in C/C++):
+* The compiler decided if the code is to be optimized
+* Compiler is responsible for the correctness
+* The programmer (you) will not know if the optimization is done and cannot predict performance
+    * can use inline keywords for debugging to make sure this happens
+
+Macro
+* programmer decides if to optimize the program
+* programmer is responsible for correctness
+
+
+# Anatomy: C vs Java
+C is the "grand parent" of many programming languages
+C's syntax structure informs:
+* C++
+* Java
+* JavaScript
+* Pearl
+* PHP
+* C#
+* ActionScript
+* Objective-C
+
+Makes going back and forth quite easy, these above are all C derived languages
+
+## Anatomy of C
+C's primary component structure revolves around **functions**
+
+Functions are essentially sub-routines that can be called on at any time through name and a parameters list
+There are two kinds of functions:
+* pre-compiler library imports
+* prototypes for functions and structures
+* global scope
+* main function
+* function definitions
+
+```cpp
+{
+
+    #include<stdio.h>
+
+    main()
+    {
+
+        printf("Hello World!");
+
+    }
+
+}
+```
+
+We have statements to bring in our basic output function
+* The #include statement is what brings a code library to our program
+    * one major difficulty with C/C++ is remembering all the libraries that you need to use
+
+stdio.h gives us access to Standard Input and Ouput functions
+* Console and File based I/O
+
+## The Main Function
+This function can be void but some compilers won't allow for this
+* You can just use `int main() { ...return 0; }`
+
+The main function can take command line args, passed into the params
+* `int main(int argc, char** argv)`
+* by convention we name these vars
+    * argc - Argument Count - contains num of args given in command line
+    * char** argv - argument vector - Contains the C-style strings for each commadn line argumetn given to the executable
+
+### printf()
+printf() allows us to format out our output to a greater extent
+
+# Compilation
+gcc -g -Wall helloW.c -o hello
+
+gcc - what are we compiling
+g - include all debugging info
+Wall - Show us all of the warnings
+helloW.c - filename that we are compiling
+o - redirect ouput to this filename
+
+## Declaring Variables
+At the machine level data is stored in a memory location as a sequence of bits.
+A variable declaration binds a name, attributes and a value to a location in memory allowing the programmer easy access to data stored.
+Attributes:
+* Type - what kind of info is stored, determines size of storage
+* Scope - What is the lifetime of the variable - this determines what part of RAM the var is stored in
+* Qualifiers - modifications such as constant
+
+Follows the following syntax
+* <data type> <variable name> = <value>
+
+You can separate multiple declarations with commas
+* int a, b, c;
+
+Initializations can also be separated
+
+## Scope
+The **scope** of a var begins at the point of declaration
+* Local Scope - A var that is created within code-block of function
+* Block Scope - A var that is created within some other code-block such as if statement, loop etc.
+
+Declaration-before-use: All variables must be declared before they are used
+```cpp
+{
+
+    int height = 6;
+    int width = 6;
+    int area  = height * width;
+
+}
+```
+In the example above, if we change the declaration of height and place `int area = height * width;` we would get a compile time error
+
+*Everything in C is declaration before use* 
+
+# Data Types and C
+C defines five basic types:
+* Character - 1 Byte - char
+* Integer - 4 Bytes - int
+* Floating point decimal - 4 bytes - float
+* Double floating point decimal - 8 bytes - double
+* Void - valueless - void
+
+C++ further Adds
+* Boolean - 1 byte - bool
+* Wide Character - 2 bytes - wchar_t
+
+**NOTE: BOOLEAN does not exist as a data type in C** 
+
+## Modifications
+Short - short - reduces the size of an int to 2 bytes
+Long - long - increases the size of an int to 8 bytes
+Unsigned and Signed integers
+
+
+# Printf
+printf means - "print formatted data"
+This is our primary output statement in C
+Comes form <stdio.h> and workds similar to other printf commands
+Java also has printf() and almost works identically
+
+## Anatomy of printf
+printf() has two primary parts
+* Output/formatting string
+* value list
+
+printf == printf(<output string>, (value), (value), ...)
+
+The output string is the primary output. Anything here will be output to standard output stream
+* `printf("Hello")` --> Hello
+
+The output string can also put in specifier tags similar to a macro
+* all tags take the for of %<character>
+
+## printf() specifiers
+1. %d - decimal integer
+2. %f - floating point number
+3. %s - String
+4. %c - character
+5. %p - pointer address
+
+Examples.
+```cpp
+{
+
+    float myFloat = 3.1415926;
+    int myInt = 12345;
+
+    printf("My integer value: %10\n", myInt);
+    printf("My float value: %10.2f\n", myFloat);
+
+
+}
+```
+
+Output --> `My integer value: 12345`
+           `My float value: 3.14`
+
+## printf variants
+fprintf(<file>, <output string>, <value list>)
+* the file I/O version of printf
+
+sprintf(<C string>, <output string>, <value list>)
+* this allows you to compose a string, output is a character array
+
+snprintf(<C String>, <max byte count>, <output string>, <value list>)
+* This allows you to compose a string with a maximum size
+* Output is stored into the specified character array <C string>
+* This is usually used for buffer loading–Overloading causes loss of data as remaining
+
+
+# Input
+scanf
+* at first glance these two printf and scanf can look similar
+scanf() also uses a specifier tag system
+scanf() --> scanf(<specifier string>, <variable list>)
+
+### Oddity with Strings
+This is due to Strings not being a data type within C
+`char str [80]`
+`printf ("Enter your family name: ");`
+`scanf ("%79s", str);` --> limit this input to 79 characters
+
+We can also get multiple inputs from scanf
+`scanf("%i %i %i", %minx, %maxx, %miny);`
+* these are read from left to right order
+
+## Variants
+fscanf(<file>, <output string>, <value list>)
+* The file I/O version of scanf
+
+sscanf(<C string>, <output string>, <value list>)
+* allows us to compose a string. Input is stored into character array String
+
+# C++ Style
+
+## More Libraries
+C/C++ revolves around using the right libraries
+* `#include <iostream>` ...or `#include <iostream.h>` depends on the compiler that you are using
+using namespace std;
+* newer version of C++ have required that you cope into the std:: namespace to use iostream based functions and operators
+* With increased emphasis on OOP and more modern dev namespaces become much more standard
+    * using namespace is similar, but not completely like importing a library
