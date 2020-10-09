@@ -8,6 +8,9 @@
 * [Macros]()
 * [Compilation]()
 * [Anatomy: C vs Java]()
+* [printf]()
+* [Input]()
+* [C++ Style]()
 * [Credit]()
 
 
@@ -278,3 +281,93 @@ C++ further Adds
 Short - short - reduces the size of an int to 2 bytes
 Long - long - increases the size of an int to 8 bytes
 Unsigned and Signed integers
+
+
+# Printf
+printf means - "print formatted data"
+This is our primary output statement in C
+Comes form <stdio.h> and workds similar to other printf commands
+Java also has printf() and almost works identically
+
+## Anatomy of printf
+printf() has two primary parts
+* Output/formatting string
+* value list
+
+printf == printf(<output string>, (value), (value), ...)
+
+The output string is the primary output. Anything here will be output to standard output stream
+* `printf("Hello")` --> Hello
+
+The output string can also put in specifier tags similar to a macro
+* all tags take the for of %<character>
+
+## printf() specifiers
+1. %d - decimal integer
+2. %f - floating point number
+3. %s - String
+4. %c - character
+5. %p - pointer address
+
+Examples.
+```cpp
+{
+
+    float myFloat = 3.1415926;
+    int myInt = 12345;
+
+    printf("My integer value: %10\n", myInt);
+    printf("My float value: %10.2f\n", myFloat);
+
+
+}
+```
+
+Output --> `My integer value: 12345`
+           `My float value: 3.14`
+
+## printf variants
+fprintf(<file>, <output string>, <value list>)
+* the file I/O version of printf
+
+sprintf(<C string>, <output string>, <value list>)
+* this allows you to compose a string, output is a character array
+
+snprintf(<C String>, <max byte count>, <output string>, <value list>)
+* This allows you to compose a string with a maximum size
+* Output is stored into the specified character array <C string>
+* This is usually used for buffer loading–Overloading causes loss of data as remaining
+
+
+# Input
+scanf
+* at first glance these two printf and scanf can look similar
+scanf() also uses a specifier tag system
+scanf() --> scanf(<specifier string>, <variable list>)
+
+### Oddity with Strings
+This is due to Strings not being a data type within C
+`char str [80]`
+`printf ("Enter your family name: ");`
+`scanf ("%79s", str);` --> limit this input to 79 characters
+
+We can also get multiple inputs from scanf
+`scanf("%i %i %i", %minx, %maxx, %miny);`
+* these are read from left to right order
+
+## Variants
+fscanf(<file>, <output string>, <value list>)
+* The file I/O version of scanf
+
+sscanf(<C string>, <output string>, <value list>)
+* allows us to compose a string. Input is stored into character array String
+
+# C++ Style
+
+## More Libraries
+C/C++ revolves around using the right libraries
+* `#include <iostream>` ...or `#include <iostream.h>` depends on the compiler that you are using
+using namespace std;
+* newer version of C++ have required that you cope into the std:: namespace to use iostream based functions and operators
+* With increased emphasis on OOP and more modern dev namespaces become much more standard
+    * using namespace is similar, but not completely like importing a library
