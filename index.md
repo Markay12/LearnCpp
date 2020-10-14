@@ -11,6 +11,7 @@
 * [printf]()
 * [Input]()
 * [C++ Style]()
+* [File Input and Output]()
 * [Credit]()
 
 
@@ -371,3 +372,226 @@ using namespace std;
 * newer version of C++ have required that you cope into the std:: namespace to use iostream based functions and operators
 * With increased emphasis on OOP and more modern dev namespaces become much more standard
     * using namespace is similar, but not completely like importing a library
+
+
+## Output
+* cout <<
+* or std::cout - if 'using namespace std;' is not used
+
+This is the basic output statement of C++.
+Each item that you want to output is separarted by the insertion operator '<<'.
+These items are inserted into the standards output stream as it is typed
+* no whitespace is invented or used
+
+`cout << "Hello World! << endl;`
+* endl puts an endline in the output stream
+`cout << "The location is " << x << ", " << << endl;`
+
+cout is fast and simple at a base level, however, it doesn't format output. To do this we have to use another library
+`#include <iomanip> … or … #include <iomanip.h>`
+This brings in the output stream manipulation functions:
+We can control
+* size
+* position
+* number of digits
+
+## iomanip
+*TODO*
+
+
+# File Input and Output
+
+## Pointers
+To work with files we need to manipulate file pointers.
+The pipeline for working with files:
+* Create file pointer
+    * same thing is used for both input or output
+* Open File
+    * Same command is used for in and output
+    * Need to give it different directives
+* Use file
+    * fscanf
+    * fprintf
+
+## File Pointer
+When working with C files we need a file pointer
+* FILE * <identifier>;
+
+What is the FILE *  ?
+* A FILE is an abstract data structure
+    * Details of it are hidden from the programmer
+    * Can only manipulate through C commands
+
+What is the '*'?
+* This says that the var in question is a pointer
+* We are creating a pointer to a FILE structure
+
+```cpp
+{
+
+    FILE* infile; //creates the file pointer
+
+}
+```
+
+## Opening the File
+Once we have the FILE* we need to point at, we open a file with the `fopen()` function
+* `fopen("<path>", "<directives>")
+* this creates a FILE for our FILE* to point at
+
+The path is a string and consequently needs to follow string rules
+* specifically double-slash for our paths
+    * `fopen("c:\\temp\\test\\text.txt”, “<directives>”);`
+
+The directives are also a string, but it is a string of key letters that tell the compiler what we want to do for the file
+* similar to the use of Vi or any basic file editor in Linux
+
+Common uses:
+* "w" for write
+* "r" for read
+
+### fopen()
+These directives can be combined 
+
+Examples: 
+* open file as binary file for reading
+    * `fopen("file", "rb");`
+    * NOTE: Binary reading/writing does not use fscanf/fprintf... we use fread/fwrite
+
+```cpp
+{
+
+    #include <stdio.h>
+    #include <stdlib.h>
+
+    int main(int argc, char** argv)
+    {
+
+        FILE* outfile; //file pointer
+        outfile = fopen("data.t", "w"); //open data.t for writing
+
+        int i;
+
+        //loop through file to fprinf information
+        for (i = 0; i < 100; i++)
+        {
+
+            fprintf(outfile, "%d\n", i);
+
+        }
+
+        fclose(outfile);
+
+        infile = fopen("data.t" , "r"); //open data.t for reading
+
+        int read;
+        int result;
+
+        while (result != EOF) //EOF stands for end of file
+        {
+
+            result = fscanf(infile, "%d", read);
+            printf("read: %d\n", read);
+
+        }
+        
+        fclose(infile);
+
+        return 0;
+
+
+    }
+
+}
+```
+
+### fscanf() input
+Input and output work much the same as we would expect from the console. 
+The File pointer must be used
+* `fscanf(infile, "%s", strBuff);`
+Like most file input, fscanf() will consume the file sequentially
+When working with Strings, we need a C style string which is a character Array
+
+```cpp
+{
+
+    FILE * infile;
+    char buffer[30];
+    infile = fopen("C:\\data\\names.txt","r");
+
+    int i = 0;
+    for (i = 0; i < 15; i++)
+    {
+
+        fscanf(infile, "%s", buffer);
+
+    }
+
+    fclose(infile); //close the file
+
+}
+```
+
+
+### fprintf() - output
+Similar to printf and how fscanf works, we are no redirecting our printf to a file with the file pointer
+* `fprintf(outfile, "%d\n", value);`
+
+NOTE: like printf() there isn't any automatic new line characters. A new line needs to be added explicitly
+* Rule of Thumb - do NOT use excessive whitespace in file I/O
+* If you are generating an output file to read as an input file later, make your standard clear and concise to make that an easy process
+
+
+## Closing a File
+If you open a file, don't forget to close it
+* `fclose(<FILE *>);`
+
+If files are not closed it can cause corruption or other errors
+* This also frees up RAM the file was using
+
+
+### **File Input and Output with C++**
+
+```cpp
+{
+
+    #include <iostream>
+    #include <fstream>
+
+    using std::cout;
+    using std::endl;
+
+    int main(int argc, char** argv)
+    {
+
+        std::ofstream outfile;
+        std::ifstream infile;
+        int input;
+
+        outfile.open("info.dat");
+
+        for (int i = 0; i < 100; i++)
+        {
+
+            outfile << i << endl;
+
+        }
+        outfile.close();
+
+        infile.open("info.dat");
+
+        for (int i = 0; i < 100; i++ )
+        {
+
+            infile >> input;
+            cout << "Read: " << input << endl;
+
+        }
+        infile.close();
+
+        return 0;
+
+    }
+
+}
+```
