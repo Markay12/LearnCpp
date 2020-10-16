@@ -12,6 +12,11 @@
 * [Input]()
 * [C++ Style]()
 * [File Input and Output]()
+
+---
+# Part 2
+* [Memory]()
+
 * [Credit]()
 
 
@@ -595,3 +600,74 @@ If files are not closed it can cause corruption or other errors
 
 }
 ```
+
+# Part 2
+
+
+# Memory
+In programming we work with a lot with RAM.
+RAM is fast to use and access than a Hard Drive.
+
+One thing is quicker...
+**Registers**
+* Hardware components at the lowest level
+* Does data operations in the low level
+* Load values into registers and add them together
+
+C++ has a way to suggest to the compiler that a var should live in a register instead of RAM
+Register keyword:
+* `register int myint = 7;`
+* If avalilable to be in a register, assign this var to a register when possible
+
+This, however, has no functionality
+It suggest to the compiler that this var is going to be used a LOT, but doesnt actually force any change
+* Esentially gives the variable a higher priority than others
+
+## Pointers
+Variables consist of:
+* Value
+    * What's stored in the variable
+    * The book itself
+* Location
+    * actual spot in memory
+    * Where on the bookshelf is this stored?
+* Address
+    * reference to location
+* Name
+    * Way we can refer to this var easily
+
+Address is how we refer to the location and the location is the actual location
+
+## Pointers in the Library
+The pointer is the index card in the Catalogue of the library
+* The entry on the computer that you looked up the book on
+
+Index card gives all the information about the book and tells you where it is and how to get it
+* Can be used to fetch the book too
+
+## Pointers
+They have the same properties as the variable
+* Value
+* Location
+* Address
+* Name
+
+This means we can have Pointers to pointers...
+Pointers are also variables
+
+## Why use Pointers?
+Humans are good at remembering names, machines only work in addresses
+Pointers give us both by providing a name to an address...
+* This is especially useful when we start working with pointers to pointers
+Direct control of these addresses is powerful and allows us to more fully control our memory
+
+We work purely with addresses in pointers, but we also have the ability to access and work with the info the pointer is going towards
+Operators:
+* & - when is used with var name, and give us the address of that variable
+    * allows the programmer to makje that var the target of the pointer
+
+* \* is used in two contexts
+    * use it to declare a pointer by adding it to the var declaration
+        * int* myIntPointer
+    * We use it to access information that the pointer points to - This is called de-referencing
+        * int value = *myPointer
