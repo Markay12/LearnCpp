@@ -16,6 +16,8 @@
 ---
 # Part 2
 * [Memory]()
+* [Pointers]()
+* [Arrays and Strings]()
 
 * [Credit]()
 
@@ -633,8 +635,10 @@ Variables consist of:
     * Where on the bookshelf is this stored?
 * Address
     * reference to location
+    * the floor number + shelf number + layer number of the book
 * Name
     * Way we can refer to this var easily
+    * The name of the book or the bookshelf
 
 Address is how we refer to the location and the location is the actual location
 
@@ -671,3 +675,158 @@ Operators:
         * int* myIntPointer
     * We use it to access information that the pointer points to - This is called de-referencing
         * int value = *myPointer
+
+**What is a pointer?**
+A variable that stores an address
+
+
+## Byte-Addressable Memory
+* This is going to be slightly different for a 64 bit system since memory addresses will be 64 bits in size
+* Whenever we create anything that uses memory it is given an address in RAM that uses that much space
+* The size of data directly impacts how the addressing is assigned
+    * Each byte is given an address
+
+### Visualization
+Think of people going to the olympics
+1. People come from wherever they live to a hotel/venue (disk)
+2. Then they get to their floor and room number (address)
+3. Eventually called to their event and waiting area (registers)
+4. Complete the venue/task (CPU)
+
+Understanding this can help us understand pointers as well
+* We can manipulate what memory a pointer is pointing to by using simple math
+    * we can add/subtract from the pointer to move it in memory
+Pointers have data types
+* That data type - byte addressable memory impacts how the pointer moves in memory
+
+### Pointers and Byte-Addressable Memory
+We have two types of pointers
+* int*
+* Char*
+
+An int takes up 32 bits of memory (4bytes)
+A char only takes 8 bits or 1 byte
+
+When we add 1 to a pointer we are moving it "one full data-type"
+* We see the int* movees 4 bytes
+* The char* only moves one byte
+
+# C/C++ Arrays and Strings
+Most fundamental data structure
+Arrays in many languages are similar with minor differences
+
+*Basic Understanding*
+* An array is a basic sata structure that stores multiple vars worth of info under a single name
+* Values stores sequentially in memory and accessed through an index
+* Index is necessary as it caluclates the position of each value that we need
+* Array name labels the starting address of the array, and each val is found
+    * Desired address = init address + (index * size of data stored)
+This is why the first index is *always* zero
+
+**Visualization**
+Think of an apartment building
+There are dozens of people living in a single apt building
+The building only has one address, with all individuals inside it
+However, each person inside this one address can be found through a specific unit
+
+## Arrays
+* Creating an array in C/C++ is fairly similar to Java
+    * Major difference here is its Syntax
+
+There are 2 types of arrays
+**Arrays at Compile Time**
+* Simple, as long as you know what is in it
+
+**Create during Runtime**
+* Known as dynamic arrays
+* When we don't know much about the data coming in
+
+### Basic Array Creation
+Declaraing an array:
+* <data type> <name>[<size>];
+    * `int intList[5];`
+
+Unlike Java, the array is not filled with anything. If you output the array, C/C++ will attempt to make the bits in RAM at that point 
+* May get undesired results
+
+
+**Accessing Array Values**
+```cpp
+{
+
+    int myArray[10];
+    for (int index = 0; index < 10; index++)
+    {
+
+        myArray[index] = index;
+
+    }
+
+}
+```
+
+Arrays are not automatically bound checked
+We **must** keep track of the bounds through variables, constants or #defined macro constants
+```cpp
+{
+
+    const int SIZE = 5;
+    int array[SIZE];
+
+    for(int index = 0; index < SIZE; index++)
+    {
+
+        cout << array[index] << endl;
+
+    }
+
+}
+```
+If we don't bound check our selves C/C++ will continue reading into RAM
+
+## Multiple Dimensions
+**2D Array**
+* Just use another set of [] for each dimension
+* `int twoD[10][20];`
+* In mem each row is listed in order
+
+**3D Array**
+* `int threeD[5][6][7]`
+* This can continue as much as you need, just set a new [] for each dimension
+
+```cpp
+{
+
+    int twoD[4][4];
+    for(int i = 0; i <4; i++)
+    {
+
+        for(int j = 0;j < 4; j++)
+        {
+
+            twoD[i][j] = j+i;
+
+        }
+
+    }
+
+}
+```
+
+### Initializing an Array
+`int array[10]` = {1,2,3,4,5,6,7,8,9,10};
+
+We can initialize multidimenstional arrays with nesting lists
+`int array[3][3]` = {{1,2,3},{4,5,6}}
+
+## Arrays - Strings vs. Chars
+There are two ways of initializing arrays of character in declaration
+
+`char s1[ ] = {'a', 'l', 'p', 'h', 'a'}; //as an array of char`
+`char s2[ ] = "alpha"; //as a string`
+
+These two initializations have different results in memory
+s1("alpha") has a size of 5
+s@("alpha\0") has a size of 6
+
+The first item initializes that array as a character array rather than a String
