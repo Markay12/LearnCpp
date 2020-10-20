@@ -817,7 +817,7 @@ If we don't bound check our selves C/C++ will continue reading into RAM
 `int array[10]` = {1,2,3,4,5,6,7,8,9,10};
 
 We can initialize multidimenstional arrays with nesting lists
-`int array[3][3]` = `{{1,2,3},{4,5,6}}`
+`int array[3][3]` = 1,2,3 ; 4,5,6
 
 ## Arrays - Strings vs. Chars
 There are two ways of initializing arrays of character in declaration
