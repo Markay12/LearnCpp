@@ -23,6 +23,8 @@ int main(int argc char** argv)
 void wasteMemory()
 {
 
-    int* myArray = new int[1000000];
+    int* myArray = new int[1000000]; //this array goes on the heap
+    //myArray is on the stack
 
 }
+// at the end of the function myArray goes away... but the heap memory does not
