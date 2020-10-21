@@ -1,4 +1,4 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
 void wasteMemory();
@@ -28,3 +28,6 @@ void wasteMemory()
 
 }
 // at the end of the function myArray goes away... but the heap memory does not
+```
+
+It's size is the same size of an int... even when pointing to an array
