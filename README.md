@@ -20,6 +20,7 @@
 * [Arrays and Strings]()
 * [Dynamic Arrays]()
 * [Memory Management]()
+* [Multi-Dimenstion Dynamics]()
 
 * [Credit]()
 
@@ -949,3 +950,43 @@ Dynamically allocated memory is given a specific location in RAM
 When we allocate from that part of RAM we have to free that memory back up so it can be used again
 * **THIS DOES NOT HAPPEN AUTOMATICALLY**
 
+## The HEAP
+The heap is used for dynamic allocation
+in Java the JVM creates a Heap for grabage collection and memory allocation
+The heap is allocated during run-time through dynamic allocation, but it also needs to be managed during run-time
+This is where grabage collection and memory management comes in
+* if we don't manage the heap we end with memeory leaks
+
+## Don't trust Sizeof
+The sizeof() function is useless when it comes to dynamic arrays
+* sizeof() returns the size of the target in bytes
+
+Due to the creation of a dynamic array through the use of pointers we have to navigate through that pointer
+```cpp
+{
+    int* myArray = new int[10]; //40 bytes of ints?
+    cout << sizeof(myArray) << endl; // output ... 4 ...
+}
+```
+It's size is the same size of an int... even when pointing to an array
+* on a 64-bit machine the size of the pointer will be 8 bytes
+
+
+# Multi-Dimenstion Dynamics
+
+## Arrays of Arrays
+In java we can make something called a "ragged array"
+This is where we create a multi-dimenstional array but the "2D" portion isn't the same size
+
+In Java this is very easy to create because they are objects here
+```Java
+{
+    int[][] array = new int[10][];
+    for(int c = 0; c < 10; c++)
+    {
+
+        array[c] = new int[c+5];
+
+    }
+}
+```
