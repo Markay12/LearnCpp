@@ -18,6 +18,8 @@
 * [Memory]()
 * [Pointers]()
 * [Arrays and Strings]()
+* [Dynamic Arrays]()
+* [Memory Management]()
 
 * [Credit]()
 
@@ -817,7 +819,7 @@ If we don't bound check our selves C/C++ will continue reading into RAM
 `int array[10]` = {1,2,3,4,5,6,7,8,9,10};
 
 We can initialize multidimenstional arrays with nesting lists
-`int array[3][3]` = `{{1,2,3},{4,5,6}}`
+`int array[3][3]` = 1,2,3 ; 4,5,6
 
 ## Arrays - Strings vs. Chars
 There are two ways of initializing arrays of character in declaration
@@ -827,6 +829,123 @@ There are two ways of initializing arrays of character in declaration
 
 These two initializations have different results in memory
 s1("alpha") has a size of 5
-s@("alpha\0") has a size of 6
+s2("alpha\0") has a size of 6
 
 The first item initializes that array as a character array rather than a String
+
+s2 initializes it as a String and therefore automatically adds the '\0' character into the data
+* this can lead to function issues looking for a C-style string. If '\0' is not present it can cause errors
+
+**Truncated Initialization**
+If the size of the array is specified and there is not enough space, the null charf will not be attached to the string
+
+`char s2[5] = "alpha"`; will not attach this because there is not enough room. We specified a length of 5 and we need the '\0' at length 6
+
+## Arrays and Sizing
+In C/C++ there is a command that gets the size of Compile Time created arrays
+* *This command is almost completely useless for dynamic arrays*
+`sizeof(<target>);`
+
+This command gives us the size in bytes of the target that is passed in
+`size = sizeof(array);` / `(sizeof(datatype));`
+`sizeof(array[0]);`
+
+# Dynamic Allocated Arrays
+These are used when we don't know the size of the data that we are going to be working with.
+When we don't know the size of the data we cannot allocate the array during compile time
+
+You cannot create an array with an unknown size:
+* int myArray[]; gives an error of size unknown
+    * We can't simply create one and resize later
+
+If we guess, problems of too large and too small will occur
+
+> How do we solve this issue?
+**_Pointers_**
+*Remember*: a pointer stores a memory address
+* An array reference is the memory address of the first element
+* A pointer can point to an array
+
+C/C++ has different ways of doing this
+* C uses malloc()
+* C++ uses new
+
+## C Style Dynamic Arrays
+malloc()
+* stands for memory allocation
+
+malloc() returns a void pointer
+Void is an undefined data type
+* Void is how we deal with unknowns 
+
+The malloc command needs to be casted into the type that we want it to be
+* `void* address = malloc(<number of bytes>);`
+
+We use the free(<item>) command to release the memory
+
+
+## Making an Array
+```cpp
+{
+   int* myArray;
+   int size = 10;
+
+   myArray = (int*) malloc(size * sizeof(int)); 
+}
+```
+
+1. Malloc sets aside a number of bytes
+2. We need an array of integers, so we need enough bytes to store those integers
+3. So we multiply the number of integers we want, by the size of the integers
+4. This memory gets allocated as a void pointer
+5. We cast the void pointer to an integer pointer
+6. We give the new integer pointer to our array pointer
+
+
+## Make in C++
+```cpp
+{
+    int* myArray = new int[10]
+}
+```
+Looks a lot more like Java, no data caluculation like malloc
+
+To frree space we use the delete command
+* `delete[] myArray;`
+
+```cpp
+{
+    int* myArray;
+    int size = 10;
+
+    myArray = (int*) malloc(size * sizeof(int));
+    for(int c = 0; c < size; c++)
+	    myArray[c] = c;
+}
+```
+
+In C/C++ and other languages [] is actually an operator!
+In the context of a statement such as `myArray[c]` they are in pointer notation
+* x[y] is identical to *(x + y)
+* myArray[c] -> *(myArray + c)
+    * myArray is an address
+    * c modifies this
+    * new address and dereference to work with stored value at this location
+
+
+## [] vs *
+It is quicker to traverse memory by using pointer notation (*) instead of brackets
+[] adds extra code since it has to be recognized and replaced in compilation
+Using your pointers to navigate through memory is faster by fractions of a second
+
+
+## **CAUTION**
+We are now in the territory of managing our own memory which means we must be more aware of scope and how it is used.
+Running through a loop that is local scoped rather than block scoped, when we don't dump our memory
+
+# Memory Management
+Golden Rule - "Whenever we dynamically allocate memory we MUST give it back"
+Dynamically allocated memory is given a specific location in RAM
+When we allocate from that part of RAM we have to free that memory back up so it can be used again
+* **THIS DOES NOT HAPPEN AUTOMATICALLY**
+
