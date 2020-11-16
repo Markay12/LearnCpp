@@ -11,6 +11,9 @@
 ### Part 4 -- File I/O and Linked Data
 [Click Here](https://markay12.github.io/LearnCppPart4/)
 
+### Part 5 -- Classes
+[Click Here](https://markay12.github.io/LearnCppPart5/)
+
 ---
 
 # Part 1 -- Table of Contents
