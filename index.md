@@ -2,17 +2,13 @@
 
 ![C++Image](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F1%2F18%2FISO_C%252B%252B_Logo.svg%2F160px-ISO_C%252B%252B_Logo.svg.png&f=1&nofb=1)
 ---
-### Part 2 -- Arrays, Pointers and Byte Memory  
-[Click Here](https://markay12.github.io/LearnCppPart2/)
+### [Part 2 -- Arrays, Pointers and Byte Memory](https://markay12.github.io/LearnCppPart2/)  
 
-### Part 3 -- Functions, Structures and Memory
-[Click Here](https://markay12.github.io/LearnCppPart3/)
+### [Part 3 -- Functions, Structures and Memory](https://markay12.github.io/LearnCppPart3/)
 
-### Part 4 -- File I/O and Linked Data
-[Click Here](https://markay12.github.io/LearnCppPart4/)
+### [Part 4 -- File I/O and Linked Data](https://markay12.github.io/LearnCppPart4/)
 
-### Part 5 -- Classes
-[Click Here](https://markay12.github.io/LearnCppPart5/)
+### [Part 5 -- Classes](https://markay12.github.io/LearnCppPart5/)
 
 ---
 
