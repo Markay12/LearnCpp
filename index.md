@@ -10,6 +10,8 @@
 
 ### [Part 5 -- Classes](https://markay12.github.io/LearnCppPart5/)
 
+### [Part 6 -- Inheritance](https://markay12.github.io/LearnCppPart6/)
+
 ---
 
 # Part 1 -- Table of Contents
