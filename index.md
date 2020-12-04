@@ -12,7 +12,7 @@
 
 ### [Part 6 -- Inheritance](https://markay12.github.io/LearnCppPart6/)
 
-### [Part 7 -- Polymorphism (Inheritance)](vhttps://markay12.github.io/LearnCppPart7/)
+### [Part 7 -- Polymorphism (Inheritance)](https://markay12.github.io/LearnCppPart7/)
 
 ### [Part 8 -- Data Structures](https://markay12.github.io/DataStructures)
 
