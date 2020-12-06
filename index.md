@@ -2,19 +2,19 @@
 
 ![C++Image](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F1%2F18%2FISO_C%252B%252B_Logo.svg%2F160px-ISO_C%252B%252B_Logo.svg.png&f=1&nofb=1)
 ---
-### [Part 2 -- Arrays, Pointers and Byte Memory](https://markay12.github.io/LearnCppPart2/)  
+### [Part 2 -- Arrays, Pointers and Byte Memory](https://www.cpp2.markinfo.dev/)  
 
-### [Part 3 -- Functions, Structures and Memory](https://markay12.github.io/LearnCppPart3/)
+### [Part 3 -- Functions, Structures and Memory](https://www.cpp3.markinfo.dev/)
 
-### [Part 4 -- File I/O and Linked Data](https://markay12.github.io/LearnCppPart4/)
+### [Part 4 -- File I/O and Linked Data](https://www.cpp4.markinfo.dev/)
 
-### [Part 5 -- Classes](https://markay12.github.io/LearnCppPart5/)
+### [Part 5 -- Classes](https://www.cppclass.markinfo.dev/)
 
-### [Part 6 -- Inheritance](https://markay12.github.io/LearnCppPart6/)
+### [Part 6 -- Inheritance](https://www.cppinherit.markinfo.dev/)
 
-### [Part 7 -- Polymorphism (Inheritance)](https://markay12.github.io/LearnCppPart7/)
+### [Part 7 -- Polymorphism (Inheritance)](https://www.cpp7.markinfo.dev/)
 
-### [Part 8 -- Data Structures](https://markay12.github.io/DataStructures)
+### [Part 8 -- Data Structures](https://www.datastructures.markinfo.dev/)
 
 ---
 
